@@ -1,5 +1,6 @@
 package lk.ijse.computer_Shop.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -16,6 +17,7 @@ public class UserLoginFrom {
     public TextField txtUserName;
     public TextField txtPassword;
     public AnchorPane roots;
+    public JFXButton btnLogin;
 
 
     private void processBar(ProgressIndicator p) {
@@ -39,7 +41,8 @@ public class UserLoginFrom {
 //                processBar(processdiactor);
 //                processBar(processBar);
                 txtUserName.requestFocus();
-                txtPassword.requestFocus();
+                txtPassword.setOnAction(event -> btnLogin.requestFocus());
+
 //                roots = FXMLLoader.load(this.getClass().getResource("../view/main_from.fxml"));
                 Navigation.navigation(Routes.MAINFROM,roots);
                 new Alert(Alert.AlertType.INFORMATION, "Your login").show();

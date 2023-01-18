@@ -24,6 +24,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+
+
 public class ItemFromController {
 
     public AnchorPane root;
@@ -65,6 +67,8 @@ public class ItemFromController {
     @FXML
     private TextField txtUnitPrice;
 
+    private String searchText = "";
+
     ItemBO itemBO = (ItemBO) Factory.getFactory().getBo(Factory.BOTypes.ITEM);
 
     public void initialize() {
@@ -93,12 +97,20 @@ public class ItemFromController {
                 txtQty.setDisable(false);
             }
         });
+
         txtQty.setOnAction(event -> btnSave.fire());
         loadAllItems();
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchText=newValue;
+//            loadAllItems(newValue);
+        });
     }
 
+
     private void loadAllItems(){
-        tblItem.getItems().clear();
+//        String searchText = "%" + text + "%";
+
         try {
             /*Get all items*/
             itemBO.loadAllItem();

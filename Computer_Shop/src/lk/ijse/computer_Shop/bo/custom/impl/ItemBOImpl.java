@@ -46,4 +46,5 @@ public class ItemBOImpl implements ItemBO {
     public String generateNewIdItem() throws SQLException, ClassNotFoundException {
         return itemDAO.generateNewID();
     }
+
 }
