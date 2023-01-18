@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="roots" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.UserLoginFrom">
+   <children>
+      <Label layoutX="700.0" layoutY="98.0" prefHeight="64.0" prefWidth="432.0" text="LOGIN ">
+         <font>
+            <Font name="Arial Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="700.0" layoutY="256.0" prefHeight="43.0" prefWidth="334.0" />
+      <JFXButton layoutX="785.0" layoutY="458.0" onAction="#btnSingOnAction" prefHeight="43.0" prefWidth="191.0" text="Login" />
+      <PasswordField fx:id="txtPassword" layoutX="700.0" layoutY="354.0" prefHeight="43.0" prefWidth="334.0" />
+   </children>
+</AnchorPane>

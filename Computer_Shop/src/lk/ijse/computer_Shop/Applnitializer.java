@@ -16,7 +16,7 @@ public class Applnitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root= FXMLLoader.load(this.getClass().getResource("view/main_from.fxml"));
+        Parent root= FXMLLoader.load(this.getClass().getResource("view/UserLogin.fxml"));
         Scene mainScene=new Scene(root);
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Computer Shop");

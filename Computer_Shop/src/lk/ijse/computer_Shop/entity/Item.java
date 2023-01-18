@@ -1,28 +1,27 @@
-package lk.ijse.computer_Shop.model;
+package lk.ijse.computer_Shop.entity;
 
-public class ItemDTO {
-    private String code;
+public class Item {
+    private String itemId;
     private String description;
     private double unitPrice;
-    private int qtyOnHand;
+    private int qtyOnhand;
 
-
-    public ItemDTO() {
+    public Item() {
     }
 
-    public ItemDTO(String code, String description, double unitPrice, int qtyOnHand) {
-        this.code = code;
+    public Item(String itemId, String description, double unitPrice, int qtyOnhand) {
+        this.itemId = itemId;
         this.description = description;
         this.unitPrice = unitPrice;
-        this.qtyOnHand = qtyOnHand;
+        this.qtyOnhand = qtyOnhand;
     }
 
-    public String getCode() {
-        return code;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getDescription() {
@@ -41,21 +40,21 @@ public class ItemDTO {
         this.unitPrice = unitPrice;
     }
 
-    public int getQtyOnHand() {
-        return qtyOnHand;
+    public int getQtyOnhand() {
+        return qtyOnhand;
     }
 
-    public void setQtyOnHand(int qtyOnHand) {
-        this.qtyOnHand = qtyOnHand;
+    public void setQtyOnhand(int qtyOnhand) {
+        this.qtyOnhand = qtyOnhand;
     }
 
     @Override
     public String toString() {
-        return "ItemDTO{" +
-                "code='" + code + '\'' +
+        return "Item{" +
+                "itemId='" + itemId + '\'' +
                 ", description='" + description + '\'' +
                 ", unitPrice=" + unitPrice +
-                ", qtyOnHand=" + qtyOnHand +
+                ", qtyOnhand=" + qtyOnhand +
                 '}';
     }
 }

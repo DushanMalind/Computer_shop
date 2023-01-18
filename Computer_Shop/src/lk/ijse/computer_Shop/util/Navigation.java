@@ -15,9 +15,9 @@ public class Navigation {
         Stage window=(Stage) Navigation.mealPackagesIdMain.getScene().getWindow();
 
         switch (routes){
-            case CUSTOMER:
-                window.setTitle("Customer From");
-                initUI("customerFrom.fxml");
+            case MAINFROM:
+                window.setTitle("Main From");
+                initUI("main_from.fxml");
                 break;
 
             default:
@@ -25,6 +25,6 @@ public class Navigation {
         }
     }
     private static void initUI(String location) throws IOException {
-        Navigation.mealPackagesIdMain.getChildren().add(FXMLLoader.load(Navigation.class.getResource("/lk/ijse/computer_shop/view/tdm" + location)));
+        Navigation.mealPackagesIdMain.getChildren().add(FXMLLoader.load(Navigation.class.getResource("/lk/ijse/computer_shop/view/" + location)));
     }
 }

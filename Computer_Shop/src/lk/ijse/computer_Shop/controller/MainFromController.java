@@ -167,8 +167,8 @@ public class MainFromController {
                 case "imgCustomer":
                     root = FXMLLoader.load(this.getClass().getResource("../view/customerFrom.fxml"));
                     break;
-                case "imgServise":
-                    root=null;
+                case "imgItem":
+                    root = FXMLLoader.load(this.getClass().getResource("../view/itemFrom.fxml"));
                     break;
                 default:
                     new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();
