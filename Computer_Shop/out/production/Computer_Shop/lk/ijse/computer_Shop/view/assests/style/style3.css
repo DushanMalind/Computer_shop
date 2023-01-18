@@ -1,0 +1,86 @@
+.backgroundcolor {
+    -fx-background-color: linear-gradient(to right bottom, #192940, #2C4E70);
+}
+
+.buttonColour {
+    -fx-background-color: linear-gradient(to right bottom, #0949a5, #43a2fd);
+}
+
+.topPaneBackgroundcolor {
+    -fx-background-color: linear-gradient(to right bottom, #024c7e, #25374b);
+
+}
+
+.specialTextColour {
+    -fx-background-color: linear-gradient(to right bottom, #38acff, #c606ff);
+
+}
+
+/*
+private static DBConnection dbConnection;
+private Connection connection;
+
+private DBConnection() throws ClassNotFoundException, SQLException {
+                           Class.forName("com.mysql.cj.jdbc.Driver");
+                           connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/computer_shop", "root", "1234");
+                       }
+
+public static DBConnection getDbConnection() throws SQLException, ClassNotFoundException {
+                                                 return (null == dbConnection) ? dbConnection = new DBConnection() : dbConnection;
+                                             }
+
+public Connection getConnection() {
+    return connection;
+}*/
+
+/*public static boolean placeOrder(PlaceOrder placeOrder) throws SQLException, ClassNotFoundException {
+try {
+    DBConnection.getDbConnection().getConnection().setAutoCommit(false);
+    boolean isOrderAdded = OrderModel.save(new Order(placeOrder.getOrderId(), LocalDate.now(), placeOrder.getCustomerId()));
+if (isOrderAdded) {
+    boolean isUpdated = ItemModel.updateQty(placeOrder.getOrderDetails());
+if (isUpdated) {
+    boolean isOrderDetailAdded = OrderDetailModel.saveOrderDetails(placeOrder.getOrderDetails());
+if (isOrderDetailAdded) {
+    DBConnection.getDbConnection().getConnection().commit();
+    return true;
+}
+}
+}
+DBConnection.getDbConnection().getConnection().rollback();
+return false;
+} finally {
+      DBConnection.getDbConnection().getConnection().setAutoCommit(true);
+  }
+}*/
+
+/*public static <T>T execute(String sql, Object...args) throws SQLException, ClassNotFoundException {
+               PreparedStatement pstm = DBConnection.getDbConnection().getConnection()
+               .prepareStatement(sql);
+
+       for (int i = 0; i < args.length; i++) {
+      pstm.setObject((i+1), args[i]);
+}
+
+if(sql.startsWith("SELECT") || sql.startsWith("select")) {
+    return (T) pstm.executeQuery();
+}
+return (T)(Boolean)(pstm.executeUpdate() > 0);
+}*/
+
+
+/*public class reversingArray {
+
+// function reverses the elements of the array
+   static void reverse(Integer a[])
+{
+    Collections.reverse(Arrays.asList(a));
+    System.out.println(Arrays.asList(a));
+}
+
+public static void main(String[] args)
+{
+Integer [] arr = {10, 20, 30, 40, 50};
+reverse(arr);
+}
+}*/

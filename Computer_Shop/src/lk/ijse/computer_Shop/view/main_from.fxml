@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.MainFromController">
+   <children>
+      <Label layoutX="95.0" layoutY="196.0" prefHeight="620.0" prefWidth="938.0" style="-fx-background-color: white;" styleClass="payload" stylesheets="@assests/style/style.css" />
+      <ImageView fx:id="imgCustomer" fitHeight="62.0" fitWidth="73.0" layoutX="154.0" layoutY="325.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/customers.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgItem" fitHeight="62.0" fitWidth="81.0" layoutX="319.0" layoutY="325.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-buy.gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgOrders" fitHeight="62.0" fitWidth="74.0" layoutX="472.0" layoutY="325.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-create-order%20(1).gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgOrderDeatils" fitHeight="62.0" fitWidth="74.0" layoutX="625.0" layoutY="325.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/shop.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgSupplyer" fitHeight="62.0" fitWidth="71.0" layoutX="154.0" layoutY="483.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-homer-simpson.gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgStock" fitHeight="62.0" fitWidth="81.0" layoutX="319.0" layoutY="483.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-stocks%20(1).gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgStockDeatils" fitHeight="62.0" fitWidth="71.0" layoutX="472.0" layoutY="483.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-thumbnail-view%20(1).gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgEmployess" fitHeight="69.0" fitWidth="62.0" layoutX="154.0" layoutY="636.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/multiple-users-silhouette.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgOrderPlace" fitHeight="62.0" fitWidth="68.0" layoutX="810.0" layoutY="483.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-save.gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgPlaceOrder" fitHeight="69.0" fitWidth="62.0" layoutX="810.0" layoutY="325.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/place_order.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgServise" fitHeight="75.0" fitWidth="62.0" layoutX="319.0" layoutY="636.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/images/icons8-customer-support-64.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="133.0" layoutY="401.0" prefHeight="31.0" prefWidth="105.0" text="  Customer From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="297.0" layoutY="401.0" prefHeight="31.0" prefWidth="105.0" text="     Item From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="450.0" layoutY="401.0" prefHeight="31.0" prefWidth="105.0" text="    Orders From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="604.0" layoutY="401.0" prefHeight="31.0" prefWidth="105.0" text="    Order Deatils" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="789.0" layoutY="401.0" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: blue;" text="  Place Order From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="133.0" layoutY="562.0" prefHeight="31.0" prefWidth="105.0" text="     Supplyer From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="298.0" layoutY="562.0" prefHeight="31.0" prefWidth="105.0" text="    Stock From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="789.0" layoutY="562.0" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: blue;" text="    Order Place" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="451.0" layoutY="562.0" prefHeight="31.0" prefWidth="105.0" text="   Stock Deatils" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="133.0" layoutY="709.0" prefHeight="31.0" prefWidth="105.0" text="  Empolyess From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="297.0" layoutY="709.0" prefHeight="31.0" prefWidth="105.0" text="    Servise From" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/manage-customers-form.css" />
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle2" />
+            <String fx:value="my-btn-class" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblHead" layoutX="1203.0" layoutY="203.0" prefHeight="245.0" prefWidth="556.0" text="            Welcome" textFill="#037bfc">
+         <font>
+            <Font name="Arial Bold" size="50.0" />
+         </font></Label>
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="1064.0" layoutY="415.0" prefHeight="106.0" prefWidth="834.0" text="Please select one of above main operations to proceed" textFill="#eb0c0c">
+         <font>
+            <Font name="Arial Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1227.0" layoutY="554.0" prefHeight="16.0" prefWidth="577.0" text="All Rights Reserved. MIT License.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="538.0" layoutY="30.0" prefHeight="122.0" prefWidth="844.0" text="    Computer Shop Mangemant" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="52.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+      </Label>
+   </children>
+</AnchorPane>
