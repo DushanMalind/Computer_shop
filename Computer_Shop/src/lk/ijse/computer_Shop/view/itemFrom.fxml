@@ -60,7 +60,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="648.0" layoutY="836.0" onAction="#btnClearOnDeleteAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+      <JFXButton fx:id="btnDelete" layoutX="648.0" layoutY="836.0" onAction="#btnClearOnDeleteAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
          <stylesheets>
             <URL value="@assests/style/style.css" />
             <URL value="@assests/style/style3.css" />
@@ -78,7 +78,7 @@
          </cursor>
       </JFXButton>
       <Label layoutX="981.0" layoutY="282.0" prefHeight="593.0" prefWidth="741.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
-      <TableView fx:id="tblCustomer" layoutX="996.0" layoutY="382.0" prefHeight="449.0" prefWidth="698.0" styleClass="table-cell" stylesheets="@assests/style/manage-customers-form.css">
+      <TableView fx:id="tblItem" layoutX="996.0" layoutY="382.0" prefHeight="449.0" prefWidth="698.0" styleClass="table-cell" stylesheets="@assests/style/manage-customers-form.css">
          <columns>
             <TableColumn fx:id="colCode" prefWidth="185.0" text="Code" />
             <TableColumn fx:id="colDescription" prefWidth="156.0" text="Description" />
