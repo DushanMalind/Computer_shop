@@ -1,6 +1,7 @@
 package lk.ijse.computer_Shop.bo;
 
 import lk.ijse.computer_Shop.bo.custom.impl.CustomerBOImpl;
+import lk.ijse.computer_Shop.bo.custom.impl.ItemBOImpl;
 
 public class Factory {
     private static Factory factory;
@@ -16,13 +17,15 @@ public class Factory {
     }
 
     public enum BOTypes{
-        CUSTOMER
+        CUSTOMER,ITEM
     }
 
     public SuperBO getBo(BOTypes boTypes){
         switch (boTypes){
             case CUSTOMER:
                 return new CustomerBOImpl();
+            case ITEM:
+                return new ItemBOImpl();
         }
         return null;
     }

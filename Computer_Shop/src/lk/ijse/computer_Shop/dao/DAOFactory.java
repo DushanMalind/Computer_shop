@@ -1,6 +1,7 @@
 package lk.ijse.computer_Shop.dao;
 
 import lk.ijse.computer_Shop.dao.custom.impl.CustomerDAOImpl;
+import lk.ijse.computer_Shop.dao.custom.impl.ItemDAOImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -16,13 +17,15 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        CUSTDAO
+        CUSTDAO,ITEMS
     }
 
     public SuperDAO getDAO(DAOTypes daoTypes){
         switch (daoTypes){
             case CUSTDAO:
                 return new CustomerDAOImpl();
+            case ITEMS:
+                return new ItemDAOImpl();
         }
         return null;
     }
