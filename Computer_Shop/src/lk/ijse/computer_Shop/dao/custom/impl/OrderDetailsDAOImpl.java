@@ -1,5 +1,6 @@
 package lk.ijse.computer_Shop.dao.custom.impl;
 
+import lk.ijse.computer_Shop.dao.SQLUtil;
 import lk.ijse.computer_Shop.dao.custom.OrderDetailsDAO;
 import lk.ijse.computer_Shop.entity.OrderDetails;
 
@@ -13,8 +14,8 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public boolean add(OrderDetails dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean add(OrderDetails entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("INSERT INTO orderdetails (ordId,itemId,qty,unitPrice) VALUES (?,?,?,?)",entity.getOrdId(),entity.getItemId(),entity.getQty(),entity.getUnitPrice());
     }
 
     @Override

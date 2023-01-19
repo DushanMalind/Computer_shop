@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.PlaceOrderfromController">
+   <children>
+      <Label layoutX="512.0" layoutY="91.0" prefHeight="118.0" prefWidth="843.0" text="             Mange place Order From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="215.0" layoutY="91.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/images/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <JFXComboBox fx:id="cmdCustomerIds" layoutX="420.0" layoutY="332.0" prefHeight="27.0" prefWidth="199.0" />
+      <JFXComboBox fx:id="cmdItemIds" layoutX="420.0" layoutY="441.0" prefHeight="27.0" prefWidth="199.0" />
+      <Label layoutX="403.0" layoutY="269.0" prefHeight="51.0" prefWidth="314.0" text="Customer Detalis :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="661.0" layoutY="326.0" prefHeight="39.0" prefWidth="262.0" promptText="Name" />
+      <Label layoutX="403.0" layoutY="380.0" prefHeight="51.0" prefWidth="314.0" text="Item Detalis  :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAddress" layoutX="945.0" layoutY="326.0" prefHeight="39.0" prefWidth="262.0" promptText="Address" />
+      <TextField fx:id="txtContact" layoutX="1224.0" layoutY="326.0" prefHeight="39.0" prefWidth="262.0" promptText="Contact" />
+      <TextField fx:id="txtDescription" layoutX="661.0" layoutY="435.0" prefHeight="39.0" prefWidth="262.0" promptText="Description" />
+      <TextField fx:id="txtUnitPrice" layoutX="945.0" layoutY="435.0" prefHeight="39.0" prefWidth="262.0" promptText="UnitPrice" />
+      <TextField fx:id="txtQty" layoutX="1224.0" layoutY="435.0" prefHeight="39.0" prefWidth="262.0" promptText="QtyOnHand" />
+      <TextField fx:id="txtQtyOnHand" layoutX="1502.0" layoutY="435.0" prefHeight="39.0" prefWidth="127.0" promptText="QtyOnHand" />
+      <JFXButton layoutX="1478.0" layoutY="501.0" onAction="#addToCartOnAction" prefHeight="39.0" prefWidth="144.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="Addto Cart" />
+      <TableView layoutX="560.0" layoutY="529.0" prefHeight="296.0" prefWidth="854.0">
+        <columns>
+          <TableColumn fx:id="colItemCode" prefWidth="142.0" text="Item Code" />
+            <TableColumn fx:id="colDescription" prefWidth="142.0" text="Description" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="146.0" text="UnitPrice" />
+            <TableColumn fx:id="colQty" prefWidth="138.0" text="QTY" />
+            <TableColumn fx:id="colTotal" prefWidth="142.0" text="Total" />
+            <TableColumn fx:id="colOption" prefWidth="142.0" text="Option" />
+        </columns>
+      </TableView>
+      <Label fx:id="txtOrderId" layoutX="1251.0" layoutY="223.0" prefHeight="39.0" prefWidth="183.0" styleClass="circle3" stylesheets="@assests/style/style.css">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtDate" layoutX="1251.0" layoutY="275.0" prefHeight="39.0" prefWidth="183.0" styleClass="circle3" stylesheets="@assests/style/style.css">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="560.0" layoutY="844.0" prefHeight="39.0" prefWidth="98.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="  Total">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="667.0" layoutY="844.0" prefHeight="39.0" prefWidth="183.0" styleClass="circle3" stylesheets="@assests/style/style.css">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="1271.0" layoutY="835.0" onAction="#PlaceOrdeOnAction" prefHeight="39.0" prefWidth="144.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="Place Order" />
+   </children>
+</AnchorPane>

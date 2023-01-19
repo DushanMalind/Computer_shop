@@ -1,10 +1,12 @@
 package lk.ijse.computer_Shop.dao.custom.impl;
 
+import lk.ijse.computer_Shop.dao.SQLUtil;
 import lk.ijse.computer_Shop.dao.custom.OrderDetailsDAO;
 import lk.ijse.computer_Shop.dao.custom.OrdersDAO;
 import lk.ijse.computer_Shop.entity.OrderDetails;
 import lk.ijse.computer_Shop.entity.Orders;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,27 +14,29 @@ public class OrdersDAOImpl implements OrdersDAO {
 
     @Override
     public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        throw new UnsupportedOperationException("this feature");
     }
 
     @Override
-    public boolean add(Orders dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean add(Orders entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("INSERT INTO `Orders`(ordId,date,cusId) VALUES(?,?,?)",entity.getOrdId(),entity.getDate(),entity.getCusId());
     }
 
     @Override
     public boolean update(Orders dto) throws SQLException, ClassNotFoundException {
-        return false;
+        throw new UnsupportedOperationException("this feature");
     }
 
     @Override
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
-        return false;
+        ResultSet rst=SQLUtil.execute("SELECT ordId FROM `Orders` WHERE ordID=?",id);
+        return rst.next();
     }
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("SELECT ordId FROM `Orders` ORDER BY ordId DESC LIMIT 1;");
+        return rst.next() ? String.format("OID-%03d", (Integer.parseInt(rst.getString("ordId").replace("OID-", "")) + 1)): "OID-001";
     }
 
     @Override
