@@ -58,4 +58,5 @@ public class ItemDAOImpl implements ItemDAO {
         rst.next();
         return new Item(id+"",rst.getString("description"),rst.getDouble("unitPrice"),rst.getInt("qtyOnhand"));
     }
+
 }

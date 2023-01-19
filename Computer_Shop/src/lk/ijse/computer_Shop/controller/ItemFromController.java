@@ -103,7 +103,7 @@ public class ItemFromController {
 
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             searchText=newValue;
-//            loadAllItems(newValue);
+//            loadAllItems();
         });
     }
 
@@ -174,7 +174,7 @@ public class ItemFromController {
         double unitprice= Double.parseDouble(txtUnitPrice.getText());
         int qty= Integer.parseInt(txtQty.getText());
 
-       /* if (!description.matches("[A-Za-z0-9 ]+")) {
+        if (!description.matches("[A-Za-z0-9 ]+")) {
             new Alert(Alert.AlertType.ERROR, "Invalid description").show();
             txtDescription.requestFocus();
             return;
@@ -186,7 +186,7 @@ public class ItemFromController {
             new Alert(Alert.AlertType.ERROR, "Invalid qty on hand").show();
             txtQty.requestFocus();
             return;
-        }*/
+        }
 
         if (btnSave.getText().equalsIgnoreCase("Save Item")){
             try {

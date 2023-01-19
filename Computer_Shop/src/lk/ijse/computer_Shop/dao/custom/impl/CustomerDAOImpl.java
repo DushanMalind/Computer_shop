@@ -3,7 +3,6 @@ package lk.ijse.computer_Shop.dao.custom.impl;
 import lk.ijse.computer_Shop.dao.SQLUtil;
 import lk.ijse.computer_Shop.dao.custom.CustomerDAO;
 import lk.ijse.computer_Shop.entity.Customer;
-import lk.ijse.computer_Shop.model.CustomerDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,4 +56,6 @@ public class CustomerDAOImpl implements CustomerDAO {
     public Customer search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
+
+
 }

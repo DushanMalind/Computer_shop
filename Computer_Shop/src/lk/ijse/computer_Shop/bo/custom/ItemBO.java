@@ -19,4 +19,5 @@ public interface ItemBO extends SuperBO {
 
     public String generateNewIdItem() throws SQLException, ClassNotFoundException;
 
+
 }
