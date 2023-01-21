@@ -6,12 +6,19 @@ import lk.ijse.computer_Shop.entity.Stock;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StockDAOImpl implements StockDAO {
     @Override
     public ArrayList<Stock> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<Stock>allStock=new ArrayList<>();
+        ResultSet ret=SQLUtil.execute("SELECT *FROM stock");
+        while (ret.next()){
+            Stock stock=new Stock(ret.getString("stockId"), ret.getString("supId"), LocalDate.now());
+            allStock.add(stock);
+        }
+        return allStock;
     }
 
     @Override

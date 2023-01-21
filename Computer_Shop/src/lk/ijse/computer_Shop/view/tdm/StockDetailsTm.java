@@ -1,14 +1,23 @@
 package lk.ijse.computer_Shop.view.tdm;
 
 public class StockDetailsTm {
+    private String stockId;
     private String supId;
     private String name;
     private String model;
-    private double unitPrice;
     private int qty;
+    private double unitPrice;
     private double total;
 
+
     public StockDetailsTm() {
+    }
+
+    public StockDetailsTm(String stockId, String supId, int qty, double unitPrice) {
+        this.stockId = stockId;
+        this.supId = supId;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
     }
 
     public StockDetailsTm(String supId, String name, String model, double unitPrice, int qty, double total) {
@@ -68,6 +77,14 @@ public class StockDetailsTm {
         this.total = total;
     }
 
+    public String getStockId() {
+        return stockId;
+    }
+
+    public void setStockId(String stockId) {
+        this.stockId = stockId;
+    }
+
     @Override
     public String toString() {
         return "StockDetailsTm{" +
@@ -77,6 +94,7 @@ public class StockDetailsTm {
                 ", unitPrice=" + unitPrice +
                 ", qty=" + qty +
                 ", total=" + total +
+                ", stockId='" + stockId + '\'' +
                 '}';
     }
 }

@@ -2,8 +2,10 @@ package lk.ijse.computer_Shop.dao.custom.impl;
 
 import lk.ijse.computer_Shop.dao.SQLUtil;
 import lk.ijse.computer_Shop.dao.custom.StockDetailsDAO;
+import lk.ijse.computer_Shop.entity.Stock;
 import lk.ijse.computer_Shop.entity.StockDetails;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,7 +13,13 @@ public class StockDetailsDAOImpl implements StockDetailsDAO {
 
     @Override
     public ArrayList<StockDetails> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<StockDetails>allStock=new ArrayList<>();
+        ResultSet rst=SQLUtil.execute("SELECT *FROM stockdetails");
+        while (rst.next()){
+            StockDetails stockDetails=new StockDetails(rst.getString("stockId"),rst.getString("supId"),rst.getInt("qty"),rst.getDouble("unitPrice"));
+            allStock.add(stockDetails);
+        }
+        return allStock;
     }
 
     @Override

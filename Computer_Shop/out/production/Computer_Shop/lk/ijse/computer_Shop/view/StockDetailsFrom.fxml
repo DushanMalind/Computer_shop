@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.StockDetailsFromController">
+   <children>
+      <Label layoutX="532.0" layoutY="111.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Stock Details From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="235.0" layoutY="111.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/images/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="452.0" layoutY="337.0" prefHeight="51.0" prefWidth="314.0" text="Stock ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton disable="true" layoutX="799.0" layoutY="293.0" prefHeight="39.0" prefWidth="191.0" text="+New StockDet">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField disable="true" layoutX="447.0" layoutY="401.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="1001.0" layoutY="302.0" prefHeight="593.0" prefWidth="741.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <JFXButton fx:id="btnSave" disable="true" layoutX="437.0" layoutY="869.0" prefHeight="39.0" prefWidth="191.0" text="Save Stock">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblStockDetails" layoutX="1023.0" layoutY="381.0" prefHeight="458.0" prefWidth="692.0">
+         <columns>
+            <TableColumn fx:id="colStockId" prefWidth="191.0" text="StockId" />
+            <TableColumn fx:id="colSupId" prefWidth="191.0" text="SupId" />
+            <TableColumn fx:id="colQty" prefWidth="124.0" text="QTY" />
+            <TableColumn fx:id="colUnitprice" prefWidth="184.0" text="UnitPrice" />
+         </columns>
+      </TableView>
+      <Label layoutX="452.0" layoutY="464.0" prefHeight="51.0" prefWidth="314.0" text="SupId ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField disable="true" layoutX="447.0" layoutY="528.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="452.0" layoutY="599.0" prefHeight="51.0" prefWidth="314.0" text="QTY :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField disable="true" layoutX="447.0" layoutY="663.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="445.0" layoutY="715.0" prefHeight="51.0" prefWidth="314.0" text="UnitPrice :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField disable="true" layoutX="440.0" layoutY="779.0" prefHeight="39.0" prefWidth="377.0" />
+      <JFXButton fx:id="btnSave1" disable="true" layoutX="671.0" layoutY="869.0" prefHeight="39.0" prefWidth="191.0" text="Delete">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>
