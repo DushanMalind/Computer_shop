@@ -8,13 +8,21 @@ import lk.ijse.computer_Shop.entity.Orders;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class OrdersDAOImpl implements OrdersDAO {
 
     @Override
     public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("this feature");
+        ArrayList<Orders> allOrders=new ArrayList<>();
+        ResultSet rst=SQLUtil.execute("SELECT *FROM Orders");
+        while (rst.next()){
+            Orders orders=new Orders(rst.getString("ordId"), LocalDate.now(),rst.getString("cusId"));
+            allOrders.add(orders);
+        }
+        return allOrders;
+
     }
 
     @Override

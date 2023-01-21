@@ -13,6 +13,12 @@ public class OrdersTm {
     public OrdersTm() {
     }
 
+    public OrdersTm(String orderId, LocalDate orderDate, String customerId) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.customerId = customerId;
+    }
+
     public OrdersTm(String orderId, LocalDate orderDate, String customerId, String customerName, double orderTotal) {
         this.orderId = orderId;
         this.orderDate = orderDate;

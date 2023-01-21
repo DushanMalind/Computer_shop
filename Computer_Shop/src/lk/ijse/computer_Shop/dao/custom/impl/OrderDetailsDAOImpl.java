@@ -4,13 +4,20 @@ import lk.ijse.computer_Shop.dao.SQLUtil;
 import lk.ijse.computer_Shop.dao.custom.OrderDetailsDAO;
 import lk.ijse.computer_Shop.entity.OrderDetails;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     @Override
     public ArrayList<OrderDetails> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<OrderDetails> allOrderDeatils=new ArrayList<>();
+        ResultSet rst=SQLUtil.execute("SELECT *FROM orderdetails");
+        while (rst.next()){
+            OrderDetails orderDetails=new OrderDetails(rst.getString("ordId"), rst.getString("itemId"),rst.getInt("qty"),rst.getDouble("unitPrice"));
+            allOrderDeatils.add(orderDetails);
+        }
+        return allOrderDeatils;
     }
 
     @Override

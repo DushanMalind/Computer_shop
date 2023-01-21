@@ -144,26 +144,24 @@ public class PlaceOrderfromController {
 
             if (newValue != null) {
                 try {
-                    try {
+
                         if (!existCustomer(newValue + "")) {
 //                            "There is no such customer associated with the id " + id
-//                            new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + newValue + "").show();
+                            new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + newValue + "").show();
                         }
                         /*Search Customer*/
-                        CustomerDTO customer = purchaseBO.searchCustomer(newValue + "");
-                        txtName.setText(customer.getName());
-                        txtAddress.setText(customer.getAddress());
-                        txtContact.setText(customer.getContact());
-                    } catch (SQLException e) {
-                        new Alert(Alert.AlertType.ERROR, "Failed to find the customer " + newValue + "" + e).show();
-                    }
+                        CustomerDTO customerDTO = purchaseBO.searchCustomer(newValue+"");
+                        txtName.setText(customerDTO.getName());
+                        txtAddress.setText(customerDTO.getAddress());
+                        txtContact.setText(customerDTO.getContact());
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
+                } catch (SQLException | NullPointerException e) {
+                    e.printStackTrace();
+                    new Alert(Alert.AlertType.ERROR, "Failed to find the customer " + newValue + "" + e).show();
                 }
             } else {
                 txtName.clear();
-                txtAddress.clear();
-                txtContact.clear();
             }
         });
 
@@ -187,7 +185,7 @@ public class PlaceOrderfromController {
 
 //                    txtQtyOnHand.setText(tblOrderDetails.getItems().stream().filter(detail-> detail.getCode().equals(item.getCode())).<Integer>map(detail-> item.getQtyOnHand() - detail.getQty()).findFirst().orElse(item.getQtyOnHand()) + "");
                     Optional<OrderDetailTm> optOrderDetail = tblPlaceOrder.getItems().stream().filter(detail -> detail.getCode().equals(newItemCode)).findFirst();
-                    txtQtyOnHand.setText((optOrderDetail.isPresent() ? item.getQtyOnHand() - optOrderDetail.get().getQty() : item.getQtyOnHand()) + "");
+                    txtQty.setText((optOrderDetail.isPresent() ? item.getQtyOnHand() - optOrderDetail.get().getQty() : item.getQtyOnHand()) + "");
 
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

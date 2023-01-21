@@ -27,8 +27,8 @@ public class PurchaseBOImpl implements PurchaseBO {
     OrdersDAO ordersDAO = (OrdersDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERS);
     OrderDetailsDAO orderDetailsDAO = (OrderDetailsDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETALIS);
     @Override
-    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        Customer c=customerDAO.search(id);
+    public CustomerDTO searchCustomer(String code) throws SQLException, ClassNotFoundException {
+        Customer c=customerDAO.search(code);
         return new CustomerDTO(c.getCusId(),c.getName(),c.getAddress(),c.getContact());
     }
 

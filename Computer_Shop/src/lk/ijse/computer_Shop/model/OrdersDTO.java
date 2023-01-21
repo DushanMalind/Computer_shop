@@ -12,7 +12,10 @@ public class OrdersDTO {
     private double orderTotal;
     List<OrderDetailDTO> orderDetails;
 
-    public OrdersDTO() {
+    public OrdersDTO(String orderId, LocalDate orderDate, String customerId) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.customerId = customerId;
     }
 
     public OrdersDTO(String orderId, LocalDate orderDate, String customerId, List<OrderDetailDTO> orderDetails) {

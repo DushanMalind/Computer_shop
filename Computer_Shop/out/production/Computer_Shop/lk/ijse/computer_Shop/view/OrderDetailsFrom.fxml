@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.OrderDetailsFromController">
+   <children>
+      <Label layoutX="522.0" layoutY="101.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Orders From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="225.0" layoutY="101.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/images/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="442.0" layoutY="327.0" prefHeight="51.0" prefWidth="314.0" text="Oreders ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton disable="true" layoutX="789.0" layoutY="283.0" prefHeight="39.0" prefWidth="191.0" text="+New Customer">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField disable="true" layoutX="437.0" layoutY="391.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="991.0" layoutY="292.0" prefHeight="593.0" prefWidth="741.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <JFXButton fx:id="btnSave" disable="true" layoutX="427.0" layoutY="859.0" prefHeight="39.0" prefWidth="191.0" text="Save Orders">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblOrderDetails" layoutX="1013.0" layoutY="371.0" prefHeight="458.0" prefWidth="692.0">
+        <columns>
+          <TableColumn fx:id="colOrdId" prefWidth="191.0" text="OrdId" />
+            <TableColumn fx:id="colItemId" prefWidth="191.0" text="ItemId" />
+            <TableColumn fx:id="colQty" prefWidth="124.0" text="QTY" />
+            <TableColumn fx:id="colUnitprice" prefWidth="184.0" text="UnitPrice" />
+        </columns>
+      </TableView>
+      <Label layoutX="442.0" layoutY="454.0" prefHeight="51.0" prefWidth="314.0" text="Item ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField disable="true" layoutX="437.0" layoutY="518.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="442.0" layoutY="589.0" prefHeight="51.0" prefWidth="314.0" text="QTY :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField disable="true" layoutX="437.0" layoutY="653.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="435.0" layoutY="705.0" prefHeight="51.0" prefWidth="314.0" text="UnitPrice :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField disable="true" layoutX="430.0" layoutY="769.0" prefHeight="39.0" prefWidth="377.0" />
+   </children>
+</AnchorPane>

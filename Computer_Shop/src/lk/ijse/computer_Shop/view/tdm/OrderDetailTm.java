@@ -12,6 +12,13 @@ public class OrderDetailTm {
     public OrderDetailTm() {
     }
 
+    public OrderDetailTm(String code, String description, int qty, double unitPrice) {
+        this.code = code;
+        this.description = description;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+    }
+
     public OrderDetailTm(String code, String description, int qty, double unitPrice, double total) {
         this.code = code;
         this.description = description;
