@@ -3,7 +3,8 @@ package lk.ijse.computer_Shop.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,32 +15,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.computer_Shop.bo.Factory;
-import lk.ijse.computer_Shop.bo.SuperBO;
-import lk.ijse.computer_Shop.bo.custom.PurchaseSTOCKBO;
-import lk.ijse.computer_Shop.model.*;
-import lk.ijse.computer_Shop.view.tdm.OrderDetailTm;
-import lk.ijse.computer_Shop.view.tdm.StockDetailsTm;
+import lk.ijse.computer_Shop.model.CartDeatilStock;
+import lk.ijse.computer_Shop.model.ItemDTO;
+import lk.ijse.computer_Shop.model.PlaceStock;
+import lk.ijse.computer_Shop.model.SupplyerDTO;
+import lk.ijse.computer_Shop.model2.PlaceStockModel;
+import lk.ijse.computer_Shop.model2.StockModel;
+import lk.ijse.computer_Shop.view.tdm.CartTm;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class PlaceStockFromController {
 
-    public TableView<StockDetailsTm>tblStock;
-    public TableColumn colSupId;
-    public TableColumn colName;
-    public TableColumn colModel;
-    public TableColumn colUnitPrice;
-    public TableColumn colTotal;
-    public TableColumn colOption;
     @FXML
     private JFXButton btnPlaceOrder;
 
@@ -53,6 +46,27 @@ public class PlaceStockFromController {
     private JFXComboBox<String> cmdSupplyer;
 
     @FXML
+    private TableColumn<?, ?> colModel;
+
+    @FXML
+    private TableColumn<?, ?> colName;
+
+    @FXML
+    private TableColumn<?, ?> colOption;
+
+    @FXML
+    private TableColumn<?, ?> colQTY;
+
+    @FXML
+    private TableColumn<?, ?> colSupId;
+
+    @FXML
+    private TableColumn<?, ?> colTotal;
+
+    @FXML
+    private TableColumn<?, ?> colUnitPrice;
+
+    @FXML
     private Label lblDate;
 
     @FXML
@@ -63,6 +77,9 @@ public class PlaceStockFromController {
 
     @FXML
     private AnchorPane root;
+
+    @FXML
+    private TableView<CartTm> tblSupplyerPlace;
 
     @FXML
     private TextField txtDescription;
@@ -84,234 +101,208 @@ public class PlaceStockFromController {
 
     @FXML
     private TextField txtUnitPriceItem;
-    private String orderId;
 
-    PurchaseSTOCKBO purchaseSTOCKBO = (PurchaseSTOCKBO) Factory.getFactory().getBo(Factory.BOTypes.PURCHERSSTOCK);
-
-    public void initialize(){
+    public void initialize()  {
         colSupId.setCellValueFactory(new PropertyValueFactory<>("supId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colModel.setCellValueFactory(new PropertyValueFactory<>("model"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQTY.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-        TableColumn<StockDetailsTm, Button> lastCol = (TableColumn<StockDetailsTm, Button>) tblStock.getColumns().get(5);
+        colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
 
-        lastCol.setCellValueFactory(param -> {
-            Button btnDelete = new Button("Delete");
+        setItemDeatils();
+        setSupplyerDeatils();
+        setDate();
+        loadNextOrderId();
 
-            btnDelete.setOnAction(event -> {
-                tblStock.getItems().remove(param.getValue());
-                tblStock.getSelectionModel().clearSelection();
-                calculateTotal();
-                enableOrDisablePlaceOrderButton();
-            });
-
-            return new ReadOnlyObjectWrapper<>(btnDelete);
-        });
-
-        orderId=generateNewOrderId();
-        lblStockId.setText("Order ID"+orderId);
-        lblDate.setText(LocalDate.now().toString());
-        btnPlaceOrder.setDisable(true);
-        txtQTY.setOnAction(event -> btnSave.fire());
-        txtQTY.setEditable(false);
-        btnSave.setDisable(true);
-
-
-        cmdItemIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newCusID) -> {
-            enableOrDisablePlaceOrderButton();
-
-            if (newCusID != null) {
-                try {
-
-                    if (!existItem(newCusID + "")) {
-//                            "There is no such customer associated with the id " + id
-                        new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + newCusID + "").show();
-                    }
-                    ItemDTO customerDTO = purchaseSTOCKBO.searchItem(newCusID + "");
-                    txtDescription.setText(customerDTO.getDescription());
-                    txtUnitPriceItem.setText(String.valueOf(customerDTO.getUnitPrice()));
-                    txtQtyItem.setText(String.valueOf(customerDTO.getQtyOnHand()));
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                } catch (ClassNotFoundException  | NullPointerException e) {
-//                    e.printStackTrace();
-                }
-            } else {
-                txtName.clear();
-            }
-        });
-
-        cmdSupplyer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newItemCode) -> {
-            txtQTY.setEditable(newItemCode != null);
-            btnSave.setDisable(newItemCode == null);
-
-            if (newItemCode != null) {
-
-                /*Find Item*/
-                try {
-                    if (!existSupplyer(newItemCode + "")) {
-//                        throw new NotFoundException("There is no such item associated with the id " + code);
-                    }
-                    //Search Item
-                    SupplyerDTO supplyer = purchaseSTOCKBO.searchSupplyer(newItemCode + "");
-
-                    txtName.setText(supplyer.getName());
-                    txtUnitPrice.setText(String.valueOf(supplyer.getUnitPrice()));
-                    txtModel.setText(String.valueOf(supplyer.getModel()));
-
-
-//                    txtQtyOnHand.setText(tblOrderDetails.getItems().stream().filter(detail-> detail.getCode().equals(item.getCode())).<Integer>map(detail-> item.getQtyOnHand() - detail.getQty()).findFirst().orElse(item.getQtyOnHand()) + "");
-                    Optional<StockDetailsTm> optOrderDetail = tblStock.getItems().stream().filter(detail -> detail.getSupId().equals(newItemCode)).findFirst();
-//                    txtQTY.setText((optOrderDetail.isPresent() ? - optOrderDetail.get().getQty());
-
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                txtDescription.clear();
-                txtUnitPrice.clear();
-            }
-        });
-        tblStock.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedOrderDetail) -> {
-
-            if (selectedOrderDetail != null) {
-                cmdSupplyer.setDisable(true);
-                cmdSupplyer.setValue(selectedOrderDetail.getSupId());
-                btnSave.setText("Update");
-                /*txtQty.setText(Integer.parseInt(txtQty.getText()) + selectedOrderDetail.getQty() + "");
-                txtQtyOnHand.setText(selectedOrderDetail.getQty() + "");*/
-            } else {
-                btnSave.setText("Add");
-                cmdSupplyer.setDisable(false);
-                cmdSupplyer.getSelectionModel().clearSelection();
-                txtQTY.clear();
-            }
-
-        });
-
-        loadAllItemCodes();
-        loadAllSupplyer();
-    }
-
-    private boolean existSupplyer(String code) throws SQLException, ClassNotFoundException {
-        return purchaseSTOCKBO.existSupplyer(code);
-    }
-
-    private boolean existItem(String code) throws SQLException, ClassNotFoundException {
-        return purchaseSTOCKBO.existItem(code);
-    }
-
-    private void loadAllItemCodes() {
         try {
-            ArrayList<ItemDTO> allItem= purchaseSTOCKBO.loadAllItemId();
-            for (ItemDTO i:allItem){
-                cmdItemIds.getItems().add(i.getCode());
-            }
-        }catch (SQLException e){
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void loadAllSupplyer(){
-        try {
-            ArrayList<SupplyerDTO>allSupplyer= purchaseSTOCKBO.loadAllSupplyer();
-            for (SupplyerDTO s:allSupplyer){
-                cmdSupplyer.getItems().add(s.getSupId());
-            }
+            loardAllItems();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
 
-    public String generateNewOrderId() {
         try {
-            return purchaseSTOCKBO.generateNewOrderIdStock();
+            loardAllSupplyer();
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to generate a new order id").show();
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return "OID-001";
-    }
 
-
-    @FXML
-    void addToCartOnAction(ActionEvent event) {
-        String supId=cmdSupplyer.getSelectionModel().getSelectedItem();
-        String name=txtName.getText();
-        String model=txtModel.getText();
-        double unitPrice= Double.parseDouble(txtUnitPrice.getText());
-        int qty= Integer.parseInt(txtQTY.getText());
-        double total=unitPrice*(qty);
-
-        boolean exists = tblStock.getItems().stream().anyMatch(detail -> detail.getSupId().equals(supId));
-
-        if (exists){
-            StockDetailsTm  stockDetailsTm=tblStock.getItems().stream().filter(detail -> detail.getSupId().equals(supId)).findFirst().get();
-
-            if (btnSave.getText().equalsIgnoreCase("Update")){
-                stockDetailsTm.setQty(qty);
-                stockDetailsTm.setTotal(total);
-                tblStock.getSelectionModel().clearSelection();
-            }else {
-                stockDetailsTm.setQty(stockDetailsTm.getQty()+qty);
-                total=(stockDetailsTm.getQty())*(unitPrice);
-                stockDetailsTm.setTotal(total);
+        cmdItemIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue!=null){
+                setItemDeatils();
             }
-            tblStock.refresh();
-        }else {
-            tblStock.getItems().add(new StockDetailsTm(supId,name,model,unitPrice,qty,total));
-        }
-        cmdSupplyer.getSelectionModel().clearSelection();
-        cmdSupplyer.requestFocus();
-        calculateTotal();
-        enableOrDisablePlaceOrderButton();
+        });
 
+        cmdSupplyer.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue!=null){
+                setSupplyerDeatils();
+            }
+        }));
     }
 
-    private void calculateTotal() {
-        BigDecimal total = new BigDecimal(0);
-
-        for (StockDetailsTm detail : tblStock.getItems()) {
-            total = total.add(BigDecimal.valueOf(detail.getTotal()));
+    private void setItemDeatils() {
+        try {
+            for (ItemDTO i:ItemFromController.getAllItem()
+            ) {
+                if (i.getCode().equals(cmdItemIds.getValue())){
+                    txtDescription.setText(i.getDescription());
+                    txtUnitPriceItem.setText(String.valueOf(i.getUnitPrice()));
+                    txtQtyItem.setText(String.valueOf(i.getQtyOnHand()));
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        lblTotal.setText("Total: " + total);
     }
 
-    private void enableOrDisablePlaceOrderButton() {
-        btnPlaceOrder.setDisable((cmdSupplyer.getSelectionModel().getSelectedItem() != null && !tblStock.getItems().isEmpty()));
+    private void setSupplyerDeatils() {
+        try {
+            for (SupplyerDTO c:SupplyerFromController.getAllItem()
+            ) {
+                if (c.getSupId().equals(cmdSupplyer.getValue())){
+                    txtName.setText(c.getName());
+                    txtUnitPrice.setText(String.valueOf(c.getUnitPrice()));
+                    txtModel.setText(c.getModel());
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private void loardAllItems() throws SQLException, ClassNotFoundException {
+        for (ItemDTO i:ItemFromController.getAllItem()
+        ) {
+            cmdItemIds.getItems().add(i.getCode());
+        }
+    }
+
+    private void loardAllSupplyer() throws SQLException, ClassNotFoundException {
+        for (SupplyerDTO c:SupplyerFromController.getAllItem()
+        ) {
+            cmdSupplyer.getItems().add(c.getSupId());
+        }
+    }
+
+    private void setDate(){
+        lblStockId.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
     }
 
     @FXML
     void PlaceOrdeOnAction(ActionEvent event) {
-        boolean b=saveOrder(orderId,LocalDate.now(),cmdSupplyer.getValue(),
-                tblStock.getItems().stream().map(tm ->new StockDetailDTO(orderId,tm.getSupId(),tm.getQty(), tm.getUnitPrice())).collect(Collectors.toList()));
+        String orderId = lblStockId.getText();
+        String suId = cmdSupplyer.getValue();
 
-        if (b){
-            new Alert(Alert.AlertType.INFORMATION, "Order has been placed successfully").show();
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Order has not been placed successfully").show();
+        ArrayList<CartDeatilStock> cartDetails = new ArrayList<>();
+
+
+        for (int i = 0; i < tblSupplyerPlace.getItems().size(); i++) {
+            CartTm tm = obList.get(i);
+            cartDetails.add(new CartDeatilStock(orderId,tm.getSupId(),tm.getQty(),tm.getModel(),tm.getUnitPrice()));
         }
-        orderId=generateNewOrderId();
-        lblStockId.setText("Order Id:"+orderId);
-        cmdSupplyer.getSelectionModel().clearSelection();
-        tblStock.getItems().clear();
-        txtQTY.clear();
+
+        PlaceStock placeOrder = new PlaceStock(orderId,suId,cartDetails);
+        try {
+            boolean isPlaced = PlaceStockModel.placeOrder(placeOrder);
+            if (isPlaced) {
+                obList.clear();
+                loadNextOrderId();
+                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Order Not Placed!").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ObservableList<CartTm> obList= FXCollections.observableArrayList();
+    @FXML
+    void addToCartOnAction(ActionEvent event) {
+        double unitPrice=Double.parseDouble(txtUnitPrice.getText());
+        int qty=Integer.parseInt(txtQTY.getText());
+        double total=qty*unitPrice;
+        Button button=new Button("Delete");
+
+        int row=isAlredyExists(cmdSupplyer.getValue());
+        if (row==-1){
+            CartTm tm=new CartTm(cmdSupplyer.getValue(),txtName.getText(),txtModel.getText(),unitPrice,qty,total,button);
+            obList.add(tm);
+            tblSupplyerPlace.setItems(obList);
+        }else {
+            int tempQty=obList.get(row).getQty()+qty;
+            double tempTotal=unitPrice*tempQty;
+            obList.get(row).setQty(tempQty);
+            obList.get(row).setTotal(tempTotal);
+            tblSupplyerPlace.refresh();
+        }
         calculateTotal();
+        clearFileds();
+        cmdSupplyer.requestFocus();
+
+        button.setOnAction(event1 -> {
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Are you Sure Delete Record",ButtonType.YES,ButtonType.NO);
+            Optional<ButtonType> buttonType = alert.showAndWait();
+
+            if (buttonType.get()==ButtonType.YES){
+                for (CartTm tm:obList
+                ) {
+                    if (tm.getSupId().equals(tm.getSupId())){
+                        obList.remove(tm);
+                        calculateTotal();
+                        tblSupplyerPlace.refresh();
+                        return;
+                    }
+                }
+            }
+        });
 
     }
 
-    public boolean saveOrder(String orderId, LocalDate supId, String localDate, List<StockDetailDTO> stockDetails){
-        StockDTO stockDTO=new StockDTO(orderId,supId,localDate,stockDetails);
-        return purchaseSTOCKBO.purchesOrder(stockDTO);
+    private void clearFileds() {
+        txtName.clear();
+        txtModel.clear();
+        txtDescription.clear();
+        txtModel.clear();
+        txtQTY.clear();
+        txtDescription.clear();
+        txtUnitPriceItem.clear();
+        txtModel.clear();
+    }
+
+    private int isAlredyExists(String code) {
+        for (int i = 0; i < obList.size(); i++) {
+            if (obList.get(i).getSupId().equals(code)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void calculateTotal(){
+        double total=0.00;
+        for (CartTm tm:obList
+        ) {
+            total+=tm.getTotal();
+        }
+        lblTotal.setText(String.valueOf(total));
+    }
+
+    private void loadNextOrderId() {
+        try {
+            String orderId = StockModel.generateNextOrderId();
+            lblStockId.setText(orderId);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

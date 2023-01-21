@@ -95,7 +95,7 @@ public class PurchaseSTOCKImpl implements PurchaseSTOCKBO {
                 return false;
             }
 
-            for (StockDetailDTO d: dto.getStockDetails()){
+            /*for (StockDetailDTO d: dto.getStockDetails()){
                 StockDetails stockDetails=new StockDetails(d.getStockId(),d.getSupId(),d.getQty(),d.getUnitPrice());
                 boolean b3=stockDetailsDAO.add(stockDetails);
                 if (!b3){
@@ -103,7 +103,7 @@ public class PurchaseSTOCKImpl implements PurchaseSTOCKBO {
                     connection.setAutoCommit(true);
                     return false;
                 }
-            }
+            }*/
             connection.commit();
             connection.setAutoCommit(true);
             return true;

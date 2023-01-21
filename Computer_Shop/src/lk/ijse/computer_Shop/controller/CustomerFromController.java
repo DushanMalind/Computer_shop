@@ -249,20 +249,20 @@ public class CustomerFromController {
 //        Collections.sort(cust);
         return cust.get(cust.size() - 1).getId();
     }
-/*    public static ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
+    public static ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
 
             Connection connection = DBConnection.getDbConnection().getConnection();
             ResultSet result = connection.prepareStatement("SELECT *FROM customer").executeQuery();
             ArrayList<CustomerDTO> data = new ArrayList();
             while (result.next()) {
                 CustomerDTO c = new CustomerDTO(
-                        result.getString(0),
                         result.getString(1),
                         result.getString(2),
-                        result.getString(3)
+                        result.getString(3),
+                        result.getString(4)
                 );
                 data.add(c);
             }
             return data;
-    }*/
+    }
 }

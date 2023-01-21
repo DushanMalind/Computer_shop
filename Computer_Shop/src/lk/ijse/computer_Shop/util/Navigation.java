@@ -19,6 +19,10 @@ public class Navigation {
                 window.setTitle("Main From");
                 initUI("main_from.fxml");
                 break;
+            case PLACE:
+                window.setTitle("Main From");
+                initUI("PlaceStockFrom.fxml");
+                break;
 
             default:
                 new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();

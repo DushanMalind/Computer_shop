@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.PlaceStockFromController">
    <children>
       <Label layoutX="522.0" layoutY="101.0" prefHeight="118.0" prefWidth="843.0" text="             Mange place Stock From">
@@ -47,7 +46,7 @@
       <TextField fx:id="txtDescription" layoutX="674.0" layoutY="379.0" prefHeight="39.0" prefWidth="262.0" promptText="Description" />
       <TextField fx:id="txtUnitPriceItem" layoutX="958.0" layoutY="379.0" prefHeight="39.0" prefWidth="262.0" promptText="UnitPrice" />
       <TextField fx:id="txtQtyItem" layoutX="1237.0" layoutY="379.0" prefHeight="39.0" prefWidth="262.0" promptText="QtyOnHand" />
-      <Label fx:id="lblStockId" layoutX="1182.0" layoutY="233.0" prefHeight="39.0" prefWidth="262.0" styleClass="circle3" stylesheets="@assests/style/style.css">
+      <Label fx:id="lblStockId" layoutX="1182.0" layoutY="233.0" prefHeight="39.0" prefWidth="262.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="   ">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
@@ -74,7 +73,7 @@
       <TextField fx:id="txtUnitPrice" layoutX="956.0" layoutY="500.0" prefHeight="39.0" prefWidth="262.0" promptText="UnitPrice" />
       <TextField fx:id="txtModel" layoutX="1235.0" layoutY="500.0" prefHeight="39.0" prefWidth="262.0" promptText="Model" />
       <TextField fx:id="txtQTY" layoutX="1511.0" layoutY="500.0" prefHeight="39.0" prefWidth="72.0" promptText="QTY" />
-      <TableView fx:id="tblSupplyerPlace" layoutX="450.0" layoutY="599.0" prefHeight="183.0" prefWidth="1160.0">
+      <TableView fx:id="tblSupplyerPlace" layoutX="453.0" layoutY="597.0" prefHeight="183.0" prefWidth="1160.0">
          <columns>
             <TableColumn fx:id="colSupId" prefWidth="170.0" text="SupId" />
             <TableColumn fx:id="colName" prefWidth="205.0" text="Name" />

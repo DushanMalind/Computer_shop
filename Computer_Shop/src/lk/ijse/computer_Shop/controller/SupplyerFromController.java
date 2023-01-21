@@ -15,11 +15,14 @@ import javafx.stage.Stage;
 import lk.ijse.computer_Shop.bo.Factory;
 import lk.ijse.computer_Shop.bo.SuperBO;
 import lk.ijse.computer_Shop.bo.custom.SupplyerBO;
+import lk.ijse.computer_Shop.db.DBConnection;
 import lk.ijse.computer_Shop.model.SupplyerDTO;
 import lk.ijse.computer_Shop.view.tdm.SupplyerTm;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -273,6 +276,24 @@ public class SupplyerFromController {
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
         Platform.runLater(() -> primaryStage.sizeToScene());
+    }
+
+    public static ArrayList<SupplyerDTO> getAllItem() throws ClassNotFoundException, SQLException {
+
+        Connection connection = DBConnection.getDbConnection().getConnection();
+        ResultSet result = connection.prepareStatement("SELECT * FROM supplyer").executeQuery();
+        ArrayList<SupplyerDTO> data = new ArrayList();
+        while (result.next()) {
+            SupplyerDTO c = new SupplyerDTO(
+                    result.getString(1),
+                    result.getString(2),
+                    result.getDouble(3),
+                    result.getString(4)
+            );
+
+            data.add(c);
+        }
+        return data;
     }
 
 }

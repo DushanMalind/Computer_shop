@@ -15,11 +15,14 @@ import javafx.stage.Stage;
 import lk.ijse.computer_Shop.bo.Factory;
 import lk.ijse.computer_Shop.bo.SuperBO;
 import lk.ijse.computer_Shop.bo.custom.ItemBO;
+import lk.ijse.computer_Shop.db.DBConnection;
 import lk.ijse.computer_Shop.model.ItemDTO;
 import lk.ijse.computer_Shop.view.tdm.ItemTm;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -265,6 +268,24 @@ public class ItemFromController {
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
         Platform.runLater(() -> primaryStage.sizeToScene());
+    }
+
+    public static ArrayList<ItemDTO> getAllItem() throws ClassNotFoundException, SQLException {
+        Connection connection = DBConnection.getDbConnection().getConnection();
+        ResultSet result = connection.prepareStatement("SELECT * FROM item").executeQuery();
+        ArrayList<ItemDTO> data = new ArrayList();
+        while (result.next()) {
+
+            ItemDTO c = new ItemDTO(
+                    result.getString(1),
+                    result.getString(2),
+                    result.getDouble(3),
+                    result.getInt(4)
+            );
+
+            data.add(c);
+        }
+        return data;
     }
 
 }
