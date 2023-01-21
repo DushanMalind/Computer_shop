@@ -25,6 +25,10 @@ public class StockDTO {
         this.stockDetails = stockDetails;
     }
 
+    public StockDTO(String orderId, LocalDate supId, String localDate, List<StockDetailDTO> stockDetails) {
+
+    }
+
     public String getStockId() {
         return stockId;
     }

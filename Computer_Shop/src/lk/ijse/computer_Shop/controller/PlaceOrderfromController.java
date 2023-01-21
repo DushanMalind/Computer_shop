@@ -235,10 +235,6 @@ public class PlaceOrderfromController {
         }
     }*/
 
-    private boolean existCustomer(String code) throws SQLException, ClassNotFoundException {
-        return purchaseBO.existCustomer(code);
-    }
-
     private void loadAllCustomerIds() {
         try {
             ArrayList<CustomerDTO> allCustomer= purchaseBO.loadAllCustomerId();
@@ -257,6 +253,9 @@ public class PlaceOrderfromController {
         }
     }
 
+    private boolean existCustomer(String code) throws SQLException, ClassNotFoundException {
+        return purchaseBO.existCustomer(code);
+    }
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
         return purchaseBO.existItem(code);

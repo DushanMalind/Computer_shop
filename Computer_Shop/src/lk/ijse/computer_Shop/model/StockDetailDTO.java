@@ -4,24 +4,16 @@ public class StockDetailDTO {
     private String stockId;
     private String supId;
     private int qty;
-    private String description;
     private double unitPrice;
 
     public StockDetailDTO() {
     }
 
+
     public StockDetailDTO(String stockId, String supId, int qty, double unitPrice) {
         this.stockId = stockId;
         this.supId = supId;
         this.qty = qty;
-        this.unitPrice = unitPrice;
-    }
-
-    public StockDetailDTO(String stockId, String supId, int qty, String description, double unitPrice) {
-        this.stockId = stockId;
-        this.supId = supId;
-        this.qty = qty;
-        this.description = description;
         this.unitPrice = unitPrice;
     }
 
@@ -49,14 +41,6 @@ public class StockDetailDTO {
         this.qty = qty;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getUnitPrice() {
         return unitPrice;
     }
@@ -71,7 +55,6 @@ public class StockDetailDTO {
                 "stockId='" + stockId + '\'' +
                 ", supId='" + supId + '\'' +
                 ", qty=" + qty +
-                ", description='" + description + '\'' +
                 ", unitPrice=" + unitPrice +
                 '}';
     }

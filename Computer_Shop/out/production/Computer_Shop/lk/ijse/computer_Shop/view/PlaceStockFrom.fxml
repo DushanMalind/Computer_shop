@@ -74,16 +74,15 @@
       <TextField fx:id="txtUnitPrice" layoutX="956.0" layoutY="500.0" prefHeight="39.0" prefWidth="262.0" promptText="UnitPrice" />
       <TextField fx:id="txtModel" layoutX="1235.0" layoutY="500.0" prefHeight="39.0" prefWidth="262.0" promptText="Model" />
       <TextField fx:id="txtQTY" layoutX="1511.0" layoutY="500.0" prefHeight="39.0" prefWidth="72.0" promptText="QTY" />
-      <TableView fx:id="tblSupplyerPlace" layoutX="450.0" layoutY="599.0" prefHeight="183.0" prefWidth="1160.0">
-         <columns>
-            <TableColumn fx:id="colSupId" prefWidth="170.0" text="SupId" />
-            <TableColumn fx:id="colName" prefWidth="205.0" text="Name" />
-            <TableColumn fx:id="colModel" prefWidth="213.0" text="Model" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="169.0" text="Unitprice" />
-            <TableColumn fx:id="colQTY" prefWidth="141.0" text="QTY" />
-            <TableColumn fx:id="colTotal" prefWidth="130.4000244140625" text="Total" />
-            <TableColumn fx:id="colOption" prefWidth="125.60009765625" text="Option" />
-         </columns>
+      <TableView fx:id="tblStock" layoutX="593.0" layoutY="592.0" prefHeight="212.0" prefWidth="797.0">
+        <columns>
+          <TableColumn fx:id="colSupId" prefWidth="133.0" text="SupId" />
+            <TableColumn fx:id="colName" prefWidth="133.0" text="Name" />
+            <TableColumn fx:id="colModel" prefWidth="133.0" text="Model" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="133.0" text="Unitprice" />
+            <TableColumn fx:id="colTotal" prefWidth="133.0" text="Total" />
+            <TableColumn fx:id="colOption" prefWidth="133.0" text="Option" />
+        </columns>
       </TableView>
    </children>
 </AnchorPane>

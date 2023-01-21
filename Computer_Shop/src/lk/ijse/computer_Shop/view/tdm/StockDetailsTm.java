@@ -1,39 +1,23 @@
 package lk.ijse.computer_Shop.view.tdm;
 
 public class StockDetailsTm {
-    private String stockId;
     private String supId;
-    private int qty;
-    private String description;
+    private String name;
+    private String model;
     private double unitPrice;
+    private int qty;
     private double total;
 
     public StockDetailsTm() {
     }
 
-    public StockDetailsTm(String stockId, String supId, int qty, String description, double unitPrice) {
-        this.stockId = stockId;
+    public StockDetailsTm(String supId, String name, String model, double unitPrice, int qty, double total) {
         this.supId = supId;
-        this.qty = qty;
-        this.description = description;
+        this.name = name;
+        this.model = model;
         this.unitPrice = unitPrice;
-    }
-
-    public StockDetailsTm(String stockId, String supId, int qty, String description, double unitPrice, double total) {
-        this.stockId = stockId;
-        this.supId = supId;
         this.qty = qty;
-        this.description = description;
-        this.unitPrice = unitPrice;
         this.total = total;
-    }
-
-    public String getStockId() {
-        return stockId;
-    }
-
-    public void setStockId(String stockId) {
-        this.stockId = stockId;
     }
 
     public String getSupId() {
@@ -44,20 +28,20 @@ public class StockDetailsTm {
         this.supId = supId;
     }
 
-    public int getQty() {
-        return qty;
+    public String getName() {
+        return name;
     }
 
-    public void setQty(int qty) {
-        this.qty = qty;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getModel() {
+        return model;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public double getUnitPrice() {
@@ -66,6 +50,14 @@ public class StockDetailsTm {
 
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
     public double getTotal() {
@@ -79,11 +71,11 @@ public class StockDetailsTm {
     @Override
     public String toString() {
         return "StockDetailsTm{" +
-                "stockId='" + stockId + '\'' +
-                ", supId='" + supId + '\'' +
-                ", qty=" + qty +
-                ", description='" + description + '\'' +
+                "supId='" + supId + '\'' +
+                ", name='" + name + '\'' +
+                ", model='" + model + '\'' +
                 ", unitPrice=" + unitPrice +
+                ", qty=" + qty +
                 ", total=" + total +
                 '}';
     }

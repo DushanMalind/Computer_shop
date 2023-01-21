@@ -182,6 +182,9 @@ public class MainFromController {
                 case "imgSupplyer":
                     root = FXMLLoader.load(this.getClass().getResource("../view/supplyerFrom.fxml"));
                     break;
+                case "imgOrderPlace":
+                    root = FXMLLoader.load(this.getClass().getResource("../view/PlaceStockFrom.fxml"));
+                    break;
                 default:
                     new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();
             }

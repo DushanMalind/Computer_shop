@@ -1,5 +1,6 @@
 package lk.ijse.computer_Shop.bo.custom;
 
+import lk.ijse.computer_Shop.bo.SuperBO;
 import lk.ijse.computer_Shop.model.ItemDTO;
 import lk.ijse.computer_Shop.model.StockDTO;
 import lk.ijse.computer_Shop.model.SupplyerDTO;
@@ -7,7 +8,7 @@ import lk.ijse.computer_Shop.model.SupplyerDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PurchaseSTOCKBO {
+public interface PurchaseSTOCKBO extends SuperBO {
 
     public SupplyerDTO searchSupplyer(String id) throws SQLException, ClassNotFoundException;
 
