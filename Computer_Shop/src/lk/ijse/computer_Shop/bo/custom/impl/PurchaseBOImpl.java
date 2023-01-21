@@ -22,13 +22,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PurchaseBOImpl implements PurchaseBO {
-    CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTDAO);
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEMS);
     OrdersDAO ordersDAO = (OrdersDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERS);
     OrderDetailsDAO orderDetailsDAO = (OrderDetailsDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETALIS);
+    CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTDAO);
     @Override
-    public CustomerDTO searchCustomer(String code) throws SQLException, ClassNotFoundException {
-        Customer c=customerDAO.search(code);
+    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
+        Customer c=customerDAO.search(id);
         return new CustomerDTO(c.getCusId(),c.getName(),c.getAddress(),c.getContact());
     }
 

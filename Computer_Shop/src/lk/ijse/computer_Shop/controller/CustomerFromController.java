@@ -15,11 +15,14 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import lk.ijse.computer_Shop.bo.Factory;
 import lk.ijse.computer_Shop.bo.custom.CustomerBO;
+import lk.ijse.computer_Shop.db.DBConnection;
 import lk.ijse.computer_Shop.model.CustomerDTO;
 import lk.ijse.computer_Shop.view.tdm.CustomerTm;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -140,6 +143,18 @@ public class CustomerFromController {
         tblCustomer.getSelectionModel().clearSelection();
     }
 
+    private String generateNewIds() {
+        try {
+
+            return customerBO.genaRateNewId();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate a new id " + e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "C00-001";
+    }
+
 
     public void btnSaveOnCustomerAction(ActionEvent actionEvent) {
         String id=txtCustomerId.getText();
@@ -180,27 +195,28 @@ public class CustomerFromController {
 
         }else {
             try {
-                if (existCustomer(id)){
-                    new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
-
-                    customerBO.updateCustomer(new CustomerDTO(id,name,address,contact));
-
+                if (!existCustomer(id)){
+//                    new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
                 }
-            }catch (SQLException | ClassNotFoundException e){
-                new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();
-            }
+                customerBO.updateCustomer(new CustomerDTO(id,name,address,contact));
 
+            }catch (SQLException e){
+                new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             CustomerTm customerTm=tblCustomer.getSelectionModel().getSelectedItem();
             customerTm.setName(name);
             customerTm.setAddress(address);
             customerTm.setContact(contact);
             tblCustomer.refresh();
+
         }
         btnAddNewCustomer.fire();
     }
 
-    boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
-        return customerBO.existCustomer(id);
+    boolean existCustomer(String code) throws SQLException, ClassNotFoundException {
+        return customerBO.existCustomer(code);
     }
 
     public void btnClearOnCustomerAction(ActionEvent actionEvent) {
@@ -228,30 +244,25 @@ public class CustomerFromController {
     }
 
 
-    private String generateNewIds() {
-        try {
-
-            return customerBO.genaRateNewId();
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to generate a new id " + e.getMessage()).show();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-        if (tblCustomer.getItems().isEmpty()) {
-            return "C00-001";
-        } else {
-            String id = getLastCustomerId();
-            int newCustomerId = Integer.parseInt(id.replace("C", "")) + 1;
-            return String.format("C00-%03d", newCustomerId);
-        }
-
-    }
-
     private String getLastCustomerId() {
         List<CustomerTm> cust = new ArrayList<CustomerTm>(tblCustomer.getItems());
 //        Collections.sort(cust);
         return cust.get(cust.size() - 1).getId();
     }
+/*    public static ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
+
+            Connection connection = DBConnection.getDbConnection().getConnection();
+            ResultSet result = connection.prepareStatement("SELECT *FROM customer").executeQuery();
+            ArrayList<CustomerDTO> data = new ArrayList();
+            while (result.next()) {
+                CustomerDTO c = new CustomerDTO(
+                        result.getString(0),
+                        result.getString(1),
+                        result.getString(2),
+                        result.getString(3)
+                );
+                data.add(c);
+            }
+            return data;
+    }*/
 }

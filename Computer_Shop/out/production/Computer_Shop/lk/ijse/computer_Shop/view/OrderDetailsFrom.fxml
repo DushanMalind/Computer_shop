@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.OrderDetailsFromController">
    <children>
-      <Label layoutX="522.0" layoutY="101.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Orders From">
+      <Label layoutX="522.0" layoutY="101.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Orders Details From">
          <font>
             <Font name="Arial Bold" size="44.0" />
          </font>
@@ -104,5 +104,22 @@
          </font>
       </Label>
       <TextField disable="true" layoutX="430.0" layoutY="769.0" prefHeight="39.0" prefWidth="377.0" />
+      <JFXButton fx:id="btnSave1" disable="true" layoutX="661.0" layoutY="859.0" prefHeight="39.0" prefWidth="191.0" text="Delete">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

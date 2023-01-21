@@ -1,9 +1,6 @@
 package lk.ijse.computer_Shop.dao;
 
-import lk.ijse.computer_Shop.dao.custom.impl.CustomerDAOImpl;
-import lk.ijse.computer_Shop.dao.custom.impl.ItemDAOImpl;
-import lk.ijse.computer_Shop.dao.custom.impl.OrderDetailsDAOImpl;
-import lk.ijse.computer_Shop.dao.custom.impl.OrdersDAOImpl;
+import lk.ijse.computer_Shop.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -19,7 +16,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        CUSTDAO,ITEMS,ORDERS,ORDERDETALIS
+        CUSTDAO,ITEMS,ORDERS,ORDERDETALIS,SUPPLYER
     }
 
     public SuperDAO getDAO(DAOTypes daoTypes){
@@ -32,6 +29,9 @@ public class DAOFactory {
                 return new OrdersDAOImpl();
             case ORDERDETALIS:
                 return new OrderDetailsDAOImpl();
+            case SUPPLYER:
+                return new SupplyerDAOImpl();
+
 
         }
         return null;

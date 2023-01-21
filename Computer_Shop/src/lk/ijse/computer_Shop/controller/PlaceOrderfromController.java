@@ -15,12 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.computer_Shop.bo.Factory;
-import lk.ijse.computer_Shop.bo.SuperBO;
-import lk.ijse.computer_Shop.bo.custom.CustomerBO;
 import lk.ijse.computer_Shop.bo.custom.PurchaseBO;
-import lk.ijse.computer_Shop.bo.custom.impl.CustomerBOImpl;
-import lk.ijse.computer_Shop.bo.custom.impl.PurchaseBOImpl;
-import lk.ijse.computer_Shop.dao.custom.CustomerDAO;
 import lk.ijse.computer_Shop.model.CustomerDTO;
 import lk.ijse.computer_Shop.model.ItemDTO;
 import lk.ijse.computer_Shop.model.OrderDetailDTO;
@@ -128,6 +123,10 @@ public class PlaceOrderfromController {
         btnPlaceOrder.setDisable(true);
         txtName.setFocusTraversable(false);
         txtName.setEditable(false);
+        txtAddress.setFocusTraversable(false);
+        txtAddress.setEditable(false);
+        txtContact.setFocusTraversable(false);
+        txtContact.setEditable(false);
         txtDescription.setFocusTraversable(false);
         txtDescription.setEditable(false);
         txtUnitPrice.setFocusTraversable(false);
@@ -139,32 +138,29 @@ public class PlaceOrderfromController {
         btnSave.setDisable(true);
 
 
-        cmdCustomerIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        cmdCustomerIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newCusID) -> {
             enableOrDisablePlaceOrderButton();
 
-            if (newValue != null) {
+            if (newCusID != null) {
                 try {
 
-                        if (!existCustomer(newValue + "")) {
+                        if (!existCustomer(newCusID + "")) {
 //                            "There is no such customer associated with the id " + id
-                            new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + newValue + "").show();
+                            new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + newCusID + "").show();
                         }
-                        /*Search Customer*/
-                        CustomerDTO customerDTO = purchaseBO.searchCustomer(newValue+"");
+                        CustomerDTO customerDTO = purchaseBO.searchCustomer(newCusID + "");
                         txtName.setText(customerDTO.getName());
                         txtAddress.setText(customerDTO.getAddress());
                         txtContact.setText(customerDTO.getContact());
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (SQLException | NullPointerException e) {
-                    e.printStackTrace();
-                    new Alert(Alert.AlertType.ERROR, "Failed to find the customer " + newValue + "" + e).show();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException  | NullPointerException e) {
+//                    e.printStackTrace();
                 }
             } else {
                 txtName.clear();
             }
         });
-
         cmdItemIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newItemCode) -> {
             txtQtyOnHand.setEditable(newItemCode != null);
             btnSave.setDisable(newItemCode == null);
@@ -223,6 +219,26 @@ public class PlaceOrderfromController {
 
     }
 
+  /*  private void setCustomerDeatils(){
+        try {
+            for (CustomerDTO c:CustomerFromController.getAllCustomer()){
+                if (c.getId().equals(cmdCustomerIds.getValue())){
+                    txtName.setText(c.getName());
+                    txtAddress.setText(c.getAddress());
+                    txtContact.setText(c.getContact());
+                }
+            }
+        }catch (SQLException e){
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    private boolean existCustomer(String code) throws SQLException, ClassNotFoundException {
+        return purchaseBO.existCustomer(code);
+    }
+
     private void loadAllCustomerIds() {
         try {
             ArrayList<CustomerDTO> allCustomer= purchaseBO.loadAllCustomerId();
@@ -241,9 +257,6 @@ public class PlaceOrderfromController {
         }
     }
 
-    private boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
-        return purchaseBO.existCustomer(id);
-    }
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
         return purchaseBO.existItem(code);
