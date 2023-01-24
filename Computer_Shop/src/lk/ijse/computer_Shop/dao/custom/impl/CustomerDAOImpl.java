@@ -32,7 +32,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
-        return false;
+        ResultSet rst=SQLUtil.execute("SELECT cusId FROM customer WHERE cusId=?",id);
+        return rst.next();
     }
 
     @Override
@@ -53,8 +54,10 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+    public Customer search(String code) throws SQLException, ClassNotFoundException {
+        ResultSet rst  = SQLUtil.execute("SELECT * FROM customer WHERE cusId=?",code+"");
+        rst.next();
+        return new Customer(code + "",rst.getString("name"), rst.getString("address"),rst.getString("contact"));
     }
 
 

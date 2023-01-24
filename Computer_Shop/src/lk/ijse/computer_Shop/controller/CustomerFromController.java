@@ -200,6 +200,7 @@ public class CustomerFromController {
                 }
                 customerBO.updateCustomer(new CustomerDTO(id,name,address,contact));
 
+
             }catch (SQLException e){
                 new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();
             } catch (ClassNotFoundException e) {
@@ -211,11 +212,12 @@ public class CustomerFromController {
             customerTm.setContact(contact);
             tblCustomer.refresh();
 
+
         }
         btnAddNewCustomer.fire();
     }
 
-    boolean existCustomer(String code) throws SQLException, ClassNotFoundException {
+    private boolean existCustomer(String code) throws SQLException, ClassNotFoundException {
         return customerBO.existCustomer(code);
     }
 

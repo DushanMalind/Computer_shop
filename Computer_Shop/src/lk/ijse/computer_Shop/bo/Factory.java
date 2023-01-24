@@ -16,7 +16,7 @@ public class Factory {
     }
 
     public enum BOTypes{
-        CUSTOMER,ITEM,PURCHERS,OREDERS,ORDERSDETAILS,SUPPLYERS,PURCHERSSTOCK,STOCK,STOCKDETAILS
+        CUSTOMER,ITEM,PURCHERS,OREDERS,ORDERSDETAILS,SUPPLYERS,PURCHERSSTOCK,STOCK,STOCKDETAILS,EMPLOYESS
     }
 
     public SuperBO getBo(BOTypes boTypes){
@@ -39,6 +39,8 @@ public class Factory {
                 return new StockBOImpl();
             case STOCKDETAILS:
                 return new StockDetailsBOImpl();
+            case EMPLOYESS:
+                return new EmployeesBOImpl();
 
         }
         return null;

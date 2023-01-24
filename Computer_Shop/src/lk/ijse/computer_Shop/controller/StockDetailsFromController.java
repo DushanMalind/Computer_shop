@@ -1,22 +1,31 @@
 package lk.ijse.computer_Shop.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.ijse.computer_Shop.bo.Factory;
 import lk.ijse.computer_Shop.bo.SuperBO;
 import lk.ijse.computer_Shop.bo.custom.StockDetailsBO;
 import lk.ijse.computer_Shop.model.StockDetailDTO;
 import lk.ijse.computer_Shop.view.tdm.StockDetailsTm;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StockDetailsFromController {
 
+    public AnchorPane root;
     @FXML
     private JFXButton btnSave;
 
@@ -66,8 +75,14 @@ public class StockDetailsFromController {
     }
 
     @FXML
-    void navigateToHome(MouseEvent event) {
-
+    void navigateToHome(MouseEvent event) throws IOException {
+        URL resource = this.getClass().getResource("/lk/ijse/computer_Shop/view/main_from.fxml");
+        Parent root = FXMLLoader.load(resource);
+        Scene scene = new Scene(root);
+        Stage primaryStage = (Stage) (this.root.getScene().getWindow());
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        Platform.runLater(() -> primaryStage.sizeToScene());
 
     }
 

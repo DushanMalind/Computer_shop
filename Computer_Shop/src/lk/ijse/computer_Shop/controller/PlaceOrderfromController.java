@@ -154,13 +154,14 @@ public class PlaceOrderfromController {
                         txtContact.setText(customerDTO.getContact());
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
-                } catch (ClassNotFoundException  | NullPointerException e) {
-//                    e.printStackTrace();
+                } catch (ClassNotFoundException  e) {
+                    e.printStackTrace();
                 }
             } else {
                 txtName.clear();
             }
         });
+
         cmdItemIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newItemCode) -> {
             txtQtyOnHand.setEditable(newItemCode != null);
             btnSave.setDisable(newItemCode == null);

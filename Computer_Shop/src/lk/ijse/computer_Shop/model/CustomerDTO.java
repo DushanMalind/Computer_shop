@@ -1,7 +1,7 @@
 package lk.ijse.computer_Shop.model;
 
 public class CustomerDTO {
-    private String id;
+    private String cusId;
     private String name;
     private String address;
     private String contact;
@@ -9,19 +9,19 @@ public class CustomerDTO {
     public CustomerDTO() {
     }
 
-    public CustomerDTO(String id, String name, String address, String contact) {
-        this.id = id;
+    public CustomerDTO(String cusId, String name, String address, String contact) {
+        this.cusId = cusId;
         this.name = name;
         this.address = address;
         this.contact = contact;
     }
 
     public String getId() {
-        return id;
+        return cusId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.cusId = id;
     }
 
     public String getName() {
@@ -51,7 +51,7 @@ public class CustomerDTO {
     @Override
     public String toString() {
         return "CustomerDTO{" +
-                "id='" + id + '\'' +
+                "cusId='" + cusId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +

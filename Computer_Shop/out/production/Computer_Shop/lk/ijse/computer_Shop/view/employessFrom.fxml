@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.EmployessFromController">
+   <children>
+      <Label layoutX="512.0" layoutY="91.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Employees From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="215.0" layoutY="91.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/images/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="432.0" layoutY="317.0" prefHeight="51.0" prefWidth="314.0" text="Employess ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSave" layoutX="424.0" layoutY="807.0" onAction="#btnSaveOnEmployessAction" prefHeight="39.0" prefWidth="191.0" text="Save Employess">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" layoutX="643.0" layoutY="807.0" onAction="#btnClearOnEmpolyessAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="981.0" layoutY="282.0" prefHeight="593.0" prefWidth="741.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <TableView fx:id="tblEmployees" layoutX="996.0" layoutY="382.0" prefHeight="449.0" prefWidth="698.0" styleClass="table-cell" stylesheets="@assests/style/manage-customers-form.css">
+         <columns>
+            <TableColumn fx:id="colEmpId" prefWidth="185.0" text="EmpID" />
+            <TableColumn fx:id="colEmpName" prefWidth="156.0" text="EMP Name" />
+            <TableColumn fx:id="colEmpAddress" prefWidth="197.0" text="EMP Address" />
+            <TableColumn fx:id="colCusId" prefWidth="159.0" text="CusID" />
+         </columns>
+      </TableView>
+      <Separator layoutX="422.0" layoutY="902.0" prefHeight="2.0" prefWidth="823.0" />
+      <Label layoutX="1015.0" layoutY="292.0" prefHeight="51.0" prefWidth="314.0" text="Search">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnAddNewEmployess" layoutX="779.0" layoutY="273.0" onAction="#btnNewSaveOnAction" prefHeight="39.0" prefWidth="191.0" text="+New Employess">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtEMPId" layoutX="427.0" layoutY="381.0" prefHeight="39.0" prefWidth="377.0" />
+      <TextField fx:id="txtSearch" layoutX="996.0" layoutY="336.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="432.0" layoutY="437.0" prefHeight="51.0" prefWidth="314.0" text="EMP Name :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEMPName" layoutX="427.0" layoutY="501.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="427.0" layoutY="556.0" prefHeight="51.0" prefWidth="314.0" text="EMP Address :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEMPAddress" layoutX="422.0" layoutY="618.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="427.0" layoutY="673.0" prefHeight="51.0" prefWidth="314.0" text="Customer ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCusId" layoutX="422.0" layoutY="737.0" prefHeight="39.0" prefWidth="377.0" />
+   </children>
+</AnchorPane>
