@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computer_Shop.controller.ServiseFromController">
+   <children>
+      <Label layoutX="522.0" layoutY="101.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Serivse From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="225.0" layoutY="101.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/images/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="442.0" layoutY="327.0" prefHeight="51.0" prefWidth="314.0" text="Seivse ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSave" layoutX="434.0" layoutY="817.0" onAction="#btnSaveOnServiseAction" prefHeight="39.0" prefWidth="191.0" text="Save Serivse">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" layoutX="653.0" layoutY="817.0" onAction="#btnClearOnServiseAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="991.0" layoutY="292.0" prefHeight="593.0" prefWidth="741.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <TableView fx:id="tblServise" layoutX="1006.0" layoutY="392.0" prefHeight="449.0" prefWidth="698.0" styleClass="table-cell" stylesheets="@assests/style/manage-customers-form.css">
+         <columns>
+            <TableColumn fx:id="colSerivseId" prefWidth="185.0" text="SerivseId" />
+            <TableColumn fx:id="colName" prefWidth="156.0" text="Part Name" />
+            <TableColumn fx:id="colEmpId" prefWidth="197.0" text="EMP Id" />
+            <TableColumn fx:id="colPrice" prefWidth="159.0" text="Price" />
+         </columns>
+      </TableView>
+      <Separator layoutX="432.0" layoutY="912.0" prefHeight="2.0" prefWidth="823.0" />
+      <Label layoutX="1025.0" layoutY="302.0" prefHeight="51.0" prefWidth="314.0" text="Search">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnAddNewServise" layoutX="789.0" layoutY="283.0" onAction="#btnNewSaveOnAction" prefHeight="39.0" prefWidth="191.0" text="+New Serivse">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtSerivse" layoutX="437.0" layoutY="391.0" prefHeight="39.0" prefWidth="377.0" />
+      <TextField fx:id="txtSearch" layoutX="1006.0" layoutY="346.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="437.0" layoutY="452.0" prefHeight="51.0" prefWidth="314.0" text="Serivse Part Name ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="432.0" layoutY="516.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="437.0" layoutY="571.0" prefHeight="51.0" prefWidth="314.0" text="Employess ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmpId" layoutX="432.0" layoutY="635.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="437.0" layoutY="693.0" prefHeight="51.0" prefWidth="314.0" text="Price :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPrice" layoutX="432.0" layoutY="757.0" prefHeight="39.0" prefWidth="377.0" />
+      <Separator layoutX="418.0" layoutY="258.0" prefHeight="2.0" prefWidth="823.0" />
+   </children>
+</AnchorPane>
