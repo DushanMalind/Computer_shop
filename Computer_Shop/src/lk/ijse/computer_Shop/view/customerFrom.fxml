@@ -24,6 +24,7 @@
          <stylesheets>
             <URL value="@assests/style/style.css" />
             <URL value="@assests/style/style3.css" />
+
          </stylesheets>
          <styleClass>
             <String fx:value="circle3" />
@@ -75,7 +76,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="633.0" layoutY="797.0" onAction="#btnClearOnCustomerAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+      <JFXButton fx:id="btnDelete" layoutX="633.0" layoutY="797.0" onAction="#btnClearOnCustomerAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
          <stylesheets>
             <URL value="@assests/style/style.css" />
             <URL value="@assests/style/style3.css" />

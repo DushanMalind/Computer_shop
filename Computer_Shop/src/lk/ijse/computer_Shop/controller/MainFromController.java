@@ -26,6 +26,7 @@ import java.io.IOException;
 
 public class MainFromController {
 
+    public ImageView imgReport;
     @FXML
     private ImageView imgCustomer;
 
@@ -140,6 +141,10 @@ public class MainFromController {
                     lblHead.setText("Services From");
                     lblDescription.setText("Click to add, edit, delete, search or view Services");
                     break;
+                case "imgReport":
+                    lblHead.setText("Report From");
+                    lblDescription.setText("Click to add, edit, delete, search or view Services");
+                    break;
             }
             ScaleTransition scaleT = new ScaleTransition(Duration.millis(4000), icon);
             scaleT.setToX(1.2);
@@ -196,6 +201,9 @@ public class MainFromController {
                     break;
                 case "imgServise":
                     root = FXMLLoader.load(this.getClass().getResource("../view/serviseFrom.fxml"));
+                    break;
+                case "imgReport":
+                    root = FXMLLoader.load(this.getClass().getResource("../view/reportFrom.fxml"));
                     break;
                 default:
                     new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();

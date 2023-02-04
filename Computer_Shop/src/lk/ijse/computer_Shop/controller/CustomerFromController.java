@@ -46,7 +46,7 @@ public class CustomerFromController {
 
     public JFXButton btnSave;
     public JFXButton btnAddNewCustomer;
-
+    public JFXButton btnDelete;
 
 
     CustomerBO customerBO = (CustomerBO) Factory.getFactory().getBo(Factory.BOTypes.CUSTOMER);
@@ -66,7 +66,7 @@ public class CustomerFromController {
         iniUI();
 
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
+            btnDelete.setDisable(newValue==null);
             btnSave.setText(newValue !=null ?"update" : "Save");
             btnSave.setDisable(newValue==null);
 
@@ -113,6 +113,7 @@ public class CustomerFromController {
         txtAddress.setDisable(true);
         txtContact.setDisable(true);
         txtCustomerId.setEditable(false);
+        btnDelete.setDisable(true);
         btnSave.setDisable(true);
 
     }

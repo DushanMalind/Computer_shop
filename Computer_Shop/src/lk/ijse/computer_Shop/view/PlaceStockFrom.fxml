@@ -62,12 +62,12 @@
          </font>
       </Label>
       <JFXButton fx:id="btnSave" layoutX="1444.0" layoutY="547.0" onAction="#addToCartOnAction" prefHeight="39.0" prefWidth="144.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="Addto Cart" />
-      <Label fx:id="lblTotal" layoutX="593.0" layoutY="818.0" prefHeight="39.0" prefWidth="183.0" styleClass="circle3" stylesheets="@assests/style/style.css">
+      <Label fx:id="lblTotal" layoutX="614.0" layoutY="805.0" prefHeight="39.0" prefWidth="231.0" styleClass="circle3" stylesheets="@assests/style/style.css">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnPlaceOrder" layoutX="1276.0" layoutY="825.0" onAction="#PlaceOrdeOnAction" prefHeight="39.0" prefWidth="144.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="Place Order" />
+      <JFXButton fx:id="btnPlaceOrder" layoutX="1469.0" layoutY="785.0" onAction="#PlaceOrdeOnAction" prefHeight="39.0" prefWidth="144.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="Place Order" />
       <JFXComboBox fx:id="cmdSupplyer" layoutX="414.0" layoutY="506.0" prefHeight="27.0" prefWidth="199.0" />
       <TextField fx:id="txtName" layoutX="672.0" layoutY="500.0" prefHeight="39.0" prefWidth="262.0" promptText="Name" />
       <TextField fx:id="txtUnitPrice" layoutX="956.0" layoutY="500.0" prefHeight="39.0" prefWidth="262.0" promptText="UnitPrice" />
@@ -84,5 +84,10 @@
             <TableColumn fx:id="colOption" prefWidth="125.60009765625" text="Option" />
          </columns>
       </TableView>
+      <Label layoutX="467.0" layoutY="805.0" prefHeight="39.0" prefWidth="130.0" styleClass="circle3" stylesheets="@assests/style/style.css" text="Total :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
