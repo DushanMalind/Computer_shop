@@ -3,7 +3,7 @@
  git commit -m "Send commit"
  git push
 
-
+ git push -u origin master
 
 
 
